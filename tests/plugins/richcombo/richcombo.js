@@ -38,5 +38,11 @@ bender.test( {
 			anchorEl = CKEDITOR.document.getById( 'cke_' + combo.id ).findOne( 'a' );
 
 		assert.areEqual( anchorEl.getAttribute( 'aria-haspopup' ), 'listbox' );
+	},
+	'test destroy removes combo listeners': function() {
+		var combo = this.editor.ui.get( 'custom_combo' );
+
+		combo.destroy();
+		assert.areEqual( 0, combo._listeners.length );
 	}
 } );
